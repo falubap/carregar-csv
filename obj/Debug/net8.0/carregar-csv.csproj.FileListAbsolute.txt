@@ -54,3 +54,4 @@ C:\Users\pedro\Downloads\carregar-csv\obj\Debug\net8.0\refint\carregar-csv.dll
 C:\Users\pedro\Downloads\carregar-csv\obj\Debug\net8.0\carregar-csv.pdb
 C:\Users\pedro\Downloads\carregar-csv\obj\Debug\net8.0\carregar-csv.genruntimeconfig.cache
 C:\Users\pedro\Downloads\carregar-csv\obj\Debug\net8.0\ref\carregar-csv.dll
+C:\Users\pedro\Downloads\carregar-csv\obj\Debug\net8.0\carregar-csv.sourcelink.json

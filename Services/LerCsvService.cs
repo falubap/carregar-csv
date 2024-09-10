@@ -5,69 +5,76 @@ using CsvHelper.Configuration;
 
 namespace carregar_csv.Services
 {
+    //Classe responsável pelas atividades de leitura do arquivo CSV e
+    //carregamento dos seus dados para uma tabela do tipo Escola
     public class LerCsvService
     {
         private static readonly HttpClient httpClient = new();
 
+        //A operação é feita de forma assíncrona para permitir maior performance
+        //e escalabilidade
         public async Task<List<Escola>> buscarDados(string url)
         {
             List<Escola> escolas = [];
 
             try
             {
-                using(HttpResponseMessage responseMessage = await httpClient.GetAsync(url))
-                {
-                    var stream = await responseMessage.Content.ReadAsStreamAsync();
+                //Faz a requisição Http de forma não bloqueante e obtém o stream de modo assíncrono
+                using HttpResponseMessage responseMessage = await httpClient.GetAsync(url);
+                var stream = await responseMessage.Content.ReadAsStreamAsync();
 
-                    using StreamReader reader = new(stream);
-                    using(CsvReader csv = new(reader, new CsvConfiguration(CultureInfo.InvariantCulture)
+                using StreamReader reader = new(stream);
+                using CsvReader csv = new(reader, new CsvConfiguration(CultureInfo.InvariantCulture)
+                {
+                    Delimiter = ";",
+                    HasHeaderRecord = true
+                });
+                
+                //Faz a leitura do cabeçalho do arquivo CSV sem carregar os seus dados para a tabela
+                csv.Read();
+                csv.ReadHeader();
+
+                //Faz a leitura e o carregamento dos dados do arquivo CSV
+                while (csv.Read())
+                {
+                    Escola escola = new()
                     {
-                        Delimiter = ";",
-                        HasHeaderRecord = true
-                    }))
-                    {
-                        while(csv.Read())
-                        {
-                            Escola escola = new()
-                            {
-                                Id = csv.GetField<int>("_id"),
-                                Dre = csv.GetField<string>("DRE"),
-                                CodEsc = csv.GetField<int>("CODESC"),
-                                TipoEsc = csv.GetField<string>("TIPOESC"),
-                                NomEscOfi = csv.GetField<string>("NOMESCOFI"),
-                                Ceu = csv.GetField<string>("CEU"),
-                                Diretoria = csv.GetField<string>("DIRETORIA"),
-                                SubPref = csv.GetField<string>("SUBPREF"),
-                                Endereco = csv.GetField<string>("ENDERECO"),
-                                Numero = csv.GetField<int>("NUMERO"),
-                                Bairro = csv.GetField<string>("BAIRRO"),
-                                Cep = csv.GetField<int>("CEP"),
-                                Tel_1 = csv.GetField<int>("TEL1"),
-                                Tel_2 = csv.GetField<int>("TEL2"),
-                                Fax = csv.GetField<int>("FAX"),
-                                Situacao = csv.GetField<string>("SITUACAO"),
-                                CodDist = csv.GetField<int>("CODDIST"),
-                                Distrito = csv.GetField<string>("DISTRITO"),
-                                Setor = csv.GetField<int>("SETOR"),
-                                CodInep = csv.GetField<int>("CODINEP"),
-                                Cd_Cie = csv.GetField<int>("CD_CIE"),
-                                Eh = csv.GetField<int>("EH"),
-                                Fx_Etaria = csv.GetField<string>("FX_ETARIA"),
-                                Dt_Criacao = csv.GetField<DateTime>("DT_CRIACAO"),
-                                Ato_Criacao = csv.GetField<string>("ATO_CRIACAO"),
-                                Dom_Criacao = csv.GetField<DateTime>("DOM_CRIACAO"),
-                                Dt_Ini_Conv = csv.GetField<string>("DT_INI_CONV"),
-                                Dt_Autoriza = csv.GetField<string>("DT_AUTORIZA"),
-                                Dt_Extincao = csv.GetField<string>("DT_EXTINCAO"),
-                                Nome_Ant = csv.GetField<string>("NOME_ANT"),
-                                Rede = csv.GetField<string>("REDE"),
-                                Latitude = csv.GetField<string>("LATITUDE"),
-                                Longitude = csv.GetField<string>("LONGITUDE"),
-                                Database = csv.GetField<DateTime>("DATABASE")
-                            };
-                            escolas.Add(escola);
-                        }
-                    }  
+                        Dre = csv.GetField<string>(0),
+                        CodEsc = csv.GetField<string>(1),
+                        TipoEsc = csv.GetField<string>(2),
+                        Nomes = csv.GetField<string>(3),
+                        NomEscOfi = csv.GetField<string>(4),
+                        Ceu = csv.GetField<string>(5),
+                        Diretoria = csv.GetField<string>(6),
+                        SubPref = csv.GetField<string>(7),
+                        Endereco = csv.GetField<string>(8),
+                        Numero = csv.GetField<string>(9),
+                        Bairro = csv.GetField<string>(10),
+                        Cep = csv.GetField<string>(11),
+                        Tel_1 = csv.GetField<string>(12),
+                        Tel_2 = csv.GetField<string>(13),
+                        Fax = csv.GetField<string>(14),
+                        Situacao = csv.GetField<string>(15),
+                        CodDist = csv.GetField<string>(16),
+                        Distrito = csv.GetField<string>(17),
+                        Setor = csv.GetField<string>(18),
+                        CodInep = csv.GetField<string>(19),
+                        Cd_Cie = csv.GetField<string>(20),
+                        Eh = csv.GetField<string>(21),
+                        Fx_Etaria = csv.GetField<string>(22),
+                        Dt_Criacao = csv.GetField<string>(23),
+                        Ato_Criacao = csv.GetField<string>(24),
+                        Dom_Criacao = csv.GetField<string>(25),
+                        Dt_Ini_Conv = csv.GetField<string>(26),
+                        Dt_Autoriza = csv.GetField<string>(27),
+                        Dt_Extincao = csv.GetField<string>(28),
+                        Nome_Ant = csv.GetField<string>(29),
+                        Rede = csv.GetField<string>(30),
+                        Latitude = csv.GetField<string>(31),
+                        Longitude = csv.GetField<string>(32),
+                        Data_base = csv.GetField<string>(33)
+                    };
+                    escolas.Add(escola);
                 }
             }
             catch(HttpRequestException httpEx)
