@@ -1,4 +1,5 @@
 ﻿using carregar_csv.DAOs;
+using carregar_csv.DAOImpls;
 using carregar_csv.Entities;
 using carregar_csv.Services;
 
@@ -21,7 +22,7 @@ namespace carregar_csv
 
             try
             {
-                IEscolaDAO escolaDAO = new EscolaService(connectionString);
+                IEscolaDAO escolaDAO = new EscolaDAOImpl(connectionString);
                 LerCsvService lerCsvService = new();
 
                 escolaDAO.CriarDb(nomeDb);

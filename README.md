@@ -3,13 +3,14 @@
 O presente programa tem por finalidade receber dados de um arquivo CSV a partir de uma URL, e carregá-los para dentro de uma tabela em um banco de dados relacional.
 
 ### Padrão de projeto
-Foi utilizado o padrão **DAO (Data Access Object)**, que tem como principal característica a separação entre a lógica de negócio e a lógica de acesso aos dados. Desse modo, ao se alterar o tipo de armazenamento dos dados, não é necessário refatorar o código.
-Seguindo o padrão DAO, o programa está separado em:
-- **Entidades**: Tipo de dado que representa tanto uma classe do programa quanto um objeto no banco de dados;
-- **Serviços**: Implementam os métodos de suas respectivas entidades;
-- **Objetos de acesso a  dados**: Interface entre as entidades e os serviços;
+Foi utilizada uma versão simplificada do padrão **DAO (Data Access Object)**, que tem como principal característica a separação entre a lógica de negócio e a lógica de acesso aos dados. Desse modo, há um encapsulamento dos mecanismos de acesso a dados, e portanto eles se tornam independente das fontes.
+O programa está separado nas seguintes camadas:
+- **Entidades**: Aqui está armazenada a classe de domínio Escola, que possui como propriedades os campos de dados do arquivo CSV a ser lido;
+- **DAOs**: Aqui está o objeto de acesso a dados da classe Escola, que é responsável por fazer a interface entre a classe de domínio e os métodos que irão realizar operações no banco de dados;
+- **DAOImpls**: Aqui está a implementação dos métodos do objeto de acesso a dados EscolaDAO que serão responsáveis por realizar operações no banco de dados;
+- **Services**: Aqui está a classe LerCsvService responsável por receber a requisição HTTP que irá fazer a leitura do arquivo CSV e transferir os seus dados para o DAO.
 
-Além disso, o programa também apresenta uma classe  Program, responsável por implementar o método principal (Main), onde são declarados e instanciados serviços para realizar operações no banco de dados.
+Além disso, o programa também apresenta uma classe  Program, responsável por implementar o método principal (Main), onde os métodos dos DAOs e Services serão chamados para realizar a leitura do arquivo CSV desejado e carregar os seus dados para uma tabela armazenada em um banco de dados.
 
 ### Dependências
 O programa está escrito em linguagem **C#** e utiliza o **Microsoft .NET** na versão *8.0.8* como plataforma de desenvolvimento. Para executar o programa corretamente, por favor realize o download do Runtime do .NET no link abaixo:

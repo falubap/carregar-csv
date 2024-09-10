@@ -2,15 +2,15 @@ using carregar_csv.Entities;
 using carregar_csv.DAOs;
 using Microsoft.Data.SqlClient;
 
-namespace carregar_csv.Services
+namespace carregar_csv.DAOImpls
 {
     //Classe responsável por implementar os métodos da interface EscolaDAO
-    public class EscolaService : IEscolaDAO
+    public class EscolaDAOImpl : IEscolaDAO
     {
         //Declaração da string de conexão a ser utilizada para conectar ao banco de dados
         private readonly string connectionString;
 
-        public EscolaService(string _connectionString)
+        public EscolaDAOImpl(string _connectionString)
         {
             connectionString = _connectionString;
         }

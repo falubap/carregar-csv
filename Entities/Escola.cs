@@ -1,8 +1,8 @@
 namespace carregar_csv.Entities
 {
     // Classe de modelo que representa a entidade Escola
-    // Implementa as propriedades da entidade, que correspondem às
-    // colunas do arquivo CSV a ser lido
+    // Implementa as propriedades da entidade, que correspondem aos
+    // campos do arquivo CSV a ser lido
     public class Escola
     {
         public int Id { get; set; }
