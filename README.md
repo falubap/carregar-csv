@@ -56,7 +56,7 @@ Para visualizar a tabela criada, abra o Management Studio e siga os seguintes pa
 2. Em *"Server name"* digite *"localhost\sqlexpress"*
 3. Em "*Authentication"* selecione *"Windows Authentication"*
 4. Em *"Encryption"* selecione *"Mandatory"*
-5. Selecione a caixa *""Trust server certificate*
+5. Selecione a caixa *"Trust server certificate"*
 6. Clique em *"connect"*
 7. No servidor *"localhost\sqlexpress"*, expanda o diretório *"Databases"*
 8. Expanda o banco de dados **EscolasDB**, criado ao executar o programa
