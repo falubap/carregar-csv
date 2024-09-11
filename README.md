@@ -13,9 +13,9 @@ O programa está separado nas seguintes camadas:
 Além disso, o programa também apresenta uma classe  Program, responsável por implementar o método principal (Main), onde os métodos dos DAOs e Services serão chamados para realizar a leitura do arquivo CSV desejado e carregar os seus dados para uma tabela armazenada em um banco de dados.
 
 ### Dependências
-O programa está escrito em linguagem **C#** e utiliza o **Microsoft .NET** na versão *8.0.8* como plataforma de desenvolvimento. Para executar o programa corretamente, por favor realize o download do Runtime do .NET no link abaixo:
+O programa está escrito em linguagem **C#** e utiliza o **Microsoft .NET 8** como plataforma de desenvolvimento. Para executar o programa corretamente, por favor realize o download do SDK do .NET no link abaixo:
 
-[Baixar .NET 8.0.8](https://dotnet.microsoft.com/pt-br/download/dotnet/8.0)
+[Baixar .NET 8.0.401](https://dotnet.microsoft.com/pt-br/download/dotnet/8.0)
 
 Para conferir se o .NET foi instalado com sucesso, basta abrir o terminal e digitar o seguinte comando:
 
@@ -30,41 +30,47 @@ Para a criação e opreação do banco de dados, optou-se por utilizar o **Micro
 No link acima, são disponibilizadas duas versões do SQL Server para download: a versão de desenvolvedor e a versão express. Para o correto funcionamento do presente programa, por favor utilize a versão express.
 
 
-Após baixado, execute o arquivo do instalador, selecione a opção de instalação "Basic" e siga os passos indicados para concluir a instalação. Juntamente com SQL Server 2022, o instalador também irá incluir em sua máquina o **SQL Server 2022 Configuration Manager**. Por favor, antes de executar o programa, certifique-se de executar o Configuration Manager e, nele, iniciar a execução do servidor local **SQLEXPRESS**. Para isso, basta clicar com o botão direito em *SQL Server (SQLEXPRESS)* e após clicar na opção *Iniciar*.
+Após baixado, execute o arquivo do instalador, selecione a opção de instalação "Basic" e siga os passos indicados para concluir a instalação. Juntamente com SQL Server 2022.
 
 
 Ao fim da instalação, também será exibido uma tela onde é oferecido a opção de instalar também o **Microsoft SQL Server Management Studio**, que é um DBMS (sistema de gerenciamento de dados) do SQL Server, por meio do botão *"Instalar SSMS"*. Um DBMS será necessário para visualizar o banco de dados e tabela que serão criados na execução do presente programa. Por isso, clique no botão indicado e siga os passos para realizar o download e a instação do Management Studio 20.
 
-
-### Configurando o ambiente
-O presente programa faz uso das bibliotecas CsvHelper e SqlClient. Para a correta construção e execução do programa na sua máquina, por favor instale as mencionadas bibliotecas copiando e colando os comandos abaixo no seu terminal:
+O presente programa também faz uso das bibliotecas CsvHelper e SqlClient. Para a correta construção e execução do programa na sua máquina, por favor instale as mencionadas bibliotecas copiando e colando os comandos abaixo no seu terminal:
 
 ``dotnet add package CsvHelper --version 33.0.1``
 
 ``dotnet add package Microsoft.Data.SqlClient --version 5.2.2``
 
+
+### Configurando o ambiente
+Primeiramente, clone o presente repositório para a sua máquina, abrindo o Git Bash no diretório desejado para armazenar o programa e utilizando o comando:
+
+``git clone https://github.com/falubap/carregar-csv.git``
+
+Após, abra o **SQL Server 2022 Configuration Manager**, que foi instalado juntamente com o SQL Server 2022 em sua máquina. Nele, clique duas vezes em *"Serviços do SQL Server"* e, caso o estado do campo *"SQL Server (SQLEXPRESS)"* não seja *"Em Execução"*, selecione esse campo com o botão direito e clique em iniciar.
+
 ### Executando o programa
-Após ter instalado o **.NET** e o **SQL Server**, ter inicializado o servidor local **SQLEXPRESS**, e ter adicionado as bibliotecas **CsvHelper** e **SqlClient**, para executar o programa basta abrir o terminal e digitar o seguinte comando: 
+Para executar o programa, abra o terminal e se dirija ao diretório **carregar-csv** que foi clonado para a sua máquina. Digite então o seguinte comando:
 
 ``dotnet run``
 
-Após isso, o programa deve rodar como esperado e retornar as mensagens indicando o sucesso na criação do banco de dados, da tabela e a inserção dos dados na tabela.
+Após isso, o programa deve rodar como esperado e retornar as mensagens indicando o sucesso na criação da tabela e a inserção dos dados na tabela.
 
 Para visualizar a tabela criada, abra o Management Studio e siga os seguintes passos para se conectar:
 
-1. Em *"Server Type"* selecione *"Database Engine"*
-2. Em *"Server name"* digite *"localhost\sqlexpress"*
-3. Em "*Authentication"* selecione *"Windows Authentication"*
-4. Em *"Encryption"* selecione *"Mandatory"*
-5. Selecione a caixa *"Trust server certificate"*
-6. Clique em *"connect"*
-7. No servidor *"localhost\sqlexpress"*, expanda o diretório *"Databases"*
-8. Expanda o banco de dados **EscolasDB**, criado ao executar o programa
-9. Crie uma nova consulta, utilizando o botao *"New query"*
-10. Na consulta, digite o seguinte comando
+1. Em *"Server Type"* selecione *"Database Engine"*.
+2. Em *"Server name"* digite *"localhost\sqlexpress"*.
+3. Em "*Authentication"* selecione *"Windows Authentication"*.
+4. Em *"Encryption"* selecione *"Mandatory"*.
+5. Selecione a caixa *"Trust server certificate"*.
+6. Clique em *"connect"*.
+7. No servidor *"localhost\sqlexpress"*, expanda o diretório *"Databases"*.
+8. Caso o banco de dados *EscolasDB* ainda não esteja sendo exibido, tendo selecionado o diretório *"Databases"* utilize o botão *"Refresh"*. Quando o banco de dados *EscolasDB* estiver sendo exibido clique nele para o selecionar.
+9. Crie uma nova consulta, utilizando o botao *"New query"*.
+10. Na consulta, digite o seguinte comando:
 
 ``SELECT * FROM dbo.Escolas``
 
-11. Selecione o comando digitado e aperte a tecla F5
+11. Selecione o comando digitado anteriormente e aperte a tecla F5.
 
-Feitos esses passos, a tabela com os dados do arquivo CSV lido será exibida.
+Seguidos esses passos, a tabela com os dados do arquivo CSV lido será exibida.
