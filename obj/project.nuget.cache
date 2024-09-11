@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "q+nVxr7/HGQ=",
+  "dgSpecHash": "Payftn5S0XE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\pedro\\Downloads\\carregar-csv - Copia\\carregar-csv.csproj",
+  "projectFilePath": "C:\\Users\\pedro\\Downloads\\carregar-csv-testedev\\carregar-csv.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pedro\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\pedro\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

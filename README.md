@@ -49,14 +49,7 @@ Primeiramente, clone o presente repositório para a sua máquina, abrindo o Git 
 
 Após, abra o **SQL Server 2022 Configuration Manager**, que foi instalado juntamente com o SQL Server 2022 em sua máquina. Nele, clique duas vezes em *"Serviços do SQL Server"* e, caso o estado do campo *"SQL Server (SQLEXPRESS)"* não seja *"Em Execução"*, selecione esse campo com o botão direito e clique em iniciar.
 
-### Executando o programa
-Para executar o programa, abra o terminal e se dirija ao diretório **carregar-csv** que foi clonado para a sua máquina. Digite então o seguinte comando:
-
-``dotnet run``
-
-Após isso, o programa deve rodar como esperado e retornar as mensagens indicando o sucesso na criação da tabela e a inserção dos dados na tabela.
-
-Para visualizar a tabela criada, abra o Management Studio e siga os seguintes passos para se conectar:
+Abra então o **SQL Server Management System** e siga os seguintes passos para se conectar configurar o banco de dados que será utilizado:
 
 1. Em *"Server Type"* selecione *"Database Engine"*.
 2. Em *"Server name"* digite *"localhost\sqlexpress"*.
@@ -64,13 +57,29 @@ Para visualizar a tabela criada, abra o Management Studio e siga os seguintes pa
 4. Em *"Encryption"* selecione *"Mandatory"*.
 5. Selecione a caixa *"Trust server certificate"*.
 6. Clique em *"connect"*.
-7. No servidor *"localhost\sqlexpress"*, expanda o diretório *"Databases"*.
-8. Caso o banco de dados *EscolasDB* ainda não esteja sendo exibido, tendo selecionado o diretório *"Databases"* utilize o botão *"Refresh"*. Quando o banco de dados *EscolasDB* estiver sendo exibido clique nele para o selecionar.
-9. Crie uma nova consulta, utilizando o botao *"New query"*.
-10. Na consulta, digite o seguinte comando:
+7. Clique em *"File"*, selecione a opção *"Open"* e clique em *"File"*.
+8. No explorador de arquivos, se dirija ao diretório **carregar-csv** e, nele, selecione o arquivo *EscolasDB.sql*.
+9. Com o arquivo aberto, clique no botão *"Execute"*.
+10. Clique no diretório *Databases* e clique no botão *"Refresh"*.
+
+Após isso, um novo banco de dados **EscolasDB** deverá ser exibido dentro do diretório *Databases*.
+
+### Executando o programa
+Para executar o programa, abra o terminal e se dirija ao diretório **carregar-csv** que foi clonado para a sua máquina. Digite então o seguinte comando:
+
+``dotnet run``
+
+Após isso, o programa retornará mensagens indicando a criação da tabela e a inserção dos dados nela, ou retornará uma mensagem de exceção caso haja algum erro.
+
+Para visualizar a tabela criada, abra o Management Studio e siga os seguintes passos:
+
+1. Dentro do banco de dados *EscolasDB*, clique no diretório *Tables* e após clique no botão *Refresh* para exibir a tabela dbo.Escolas criada pelo programa.
+2. Clique no banco de dados *EscolasDB*.
+3. Crie uma nova consulta, utilizando o botao *"New query"*.
+4. Na consulta, digite o seguinte comando:
 
 ``SELECT * FROM dbo.Escolas``
 
-11. Selecione o comando digitado anteriormente e aperte a tecla F5.
+5. Selecione a linha de comando digitada anteriormente e aperte a tecla F5.
 
 Seguidos esses passos, a tabela com os dados do arquivo CSV lido será exibida.
