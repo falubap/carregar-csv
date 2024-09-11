@@ -6,7 +6,6 @@ namespace carregar_csv.DAOs
     // Declara os métodos da entidade Escola 
     public interface IEscolaDAO
     {
-        public void CriarDb(string nomeDb);
         public void CriarTabela(string nomeDb);
         public void InserirEscola(string nomeDb, List<Escola> escolas);
     }

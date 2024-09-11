@@ -14,26 +14,7 @@ namespace carregar_csv.DAOImpls
         {
             connectionString = _connectionString;
         }
-        
-        //Cria o banco de dados a ser utilizado para receber os dados do arquivo CSV na tabela
-        public void CriarDb(string nomeDb)
-        {
-            string query = $"IF DB_ID('{nomeDb}') IS NULL CREATE DATABASE {nomeDb}";
-
-            using SqlConnection conn = new(connectionString);
-            try
-            {
-            conn.Open();
-            SqlCommand command = new(query, conn);
-            command.ExecuteNonQuery();
-            Console.WriteLine($"Banco de dados {nomeDb} criado com sucesso.");
-            }
-            catch(SqlException ex)
-            {
-                Console.WriteLine($"Erro ao tentar criar banco de dados {nomeDb}: {ex.Message}");
-            }
-        }
-
+       
         //Cria a tabela a ser utilizada para receber os dados do arquivo CSV
         public void CriarTabela(string nomeDb)
         {

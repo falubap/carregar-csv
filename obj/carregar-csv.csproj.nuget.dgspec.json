@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pedro\\Downloads\\carregar-csv\\carregar-csv.csproj": {}
+    "C:\\Users\\pedro\\Downloads\\carregar-csv - Copia\\carregar-csv.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pedro\\Downloads\\carregar-csv\\carregar-csv.csproj": {
+    "C:\\Users\\pedro\\Downloads\\carregar-csv - Copia\\carregar-csv.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pedro\\Downloads\\carregar-csv\\carregar-csv.csproj",
+        "projectUniqueName": "C:\\Users\\pedro\\Downloads\\carregar-csv - Copia\\carregar-csv.csproj",
         "projectName": "carregar-csv",
-        "projectPath": "C:\\Users\\pedro\\Downloads\\carregar-csv\\carregar-csv.csproj",
+        "projectPath": "C:\\Users\\pedro\\Downloads\\carregar-csv - Copia\\carregar-csv.csproj",
         "packagesPath": "C:\\Users\\pedro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pedro\\Downloads\\carregar-csv\\obj\\",
+        "outputPath": "C:\\Users\\pedro\\Downloads\\carregar-csv - Copia\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pedro\\AppData\\Roaming\\NuGet\\NuGet.Config"

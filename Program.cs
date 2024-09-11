@@ -13,7 +13,7 @@ namespace carregar_csv
         //String de conexãO
         //O parâmetro "Server" deve ser passado de acordo com a configuração da máquina
         //em que o programa está rodando 
-        static readonly string connectionString = "Server=localhost\\sqlexpress; Integrated Security=true; Trusted_Connection=true; TrustServerCertificate=true;";
+        static readonly string connectionString = "Server=localhost\\sqlexpress; Database=EscolasDB; Integrated Security=true; Trusted_Connection=true; TrustServerCertificate=true;";
 
         static async Task Main()
         {
@@ -25,7 +25,6 @@ namespace carregar_csv
                 IEscolaDAO escolaDAO = new EscolaDAOImpl(connectionString);
                 LerCsvService lerCsvService = new();
 
-                escolaDAO.CriarDb(nomeDb);
                 escolaDAO.CriarTabela(nomeDb);
 
                 List<Escola> escolas = await lerCsvService.buscarDados(csvUrl);
