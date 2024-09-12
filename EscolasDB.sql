@@ -1,7 +1,6 @@
 USE [master]
 GO
 
-/****** Object:  Database [EscolasDB]    Script Date: 10/09/2024 21:02:55 ******/
 CREATE DATABASE [EscolasDB]
  CONTAINMENT = NONE
  ON  PRIMARY 

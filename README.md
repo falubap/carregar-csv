@@ -49,7 +49,7 @@ Primeiramente, clone o presente repositório para a sua máquina, abrindo o Git 
 
 Após, abra o **SQL Server 2022 Configuration Manager**, que foi instalado juntamente com o SQL Server 2022 em sua máquina. Nele, clique duas vezes em *"Serviços do SQL Server"* e, caso o estado do campo *"SQL Server (SQLEXPRESS)"* não seja *"Em Execução"*, selecione esse campo com o botão direito e clique em iniciar.
 
-Abra então o **SQL Server Management System** e siga os seguintes passos para se conectar configurar o banco de dados que será utilizado:
+Abra então o **SQL Server Management System** e siga os seguintes passos para se conectar e configurar o banco de dados que será utilizado:
 
 1. Em *"Server Type"* selecione *"Database Engine"*.
 2. Em *"Server name"* digite *"localhost\sqlexpress"*.
@@ -64,6 +64,14 @@ Abra então o **SQL Server Management System** e siga os seguintes passos para s
 
 Após isso, um novo banco de dados **EscolasDB** deverá ser exibido dentro do diretório *Databases*.
 
+Crie, então, a tabela Escolas utilizando o arquivo *dbo.Escolas.sql*. Para isso, do mesmo modo como explicado no passo na criação do banco de dados, adicione o arquivo *dbo.Escolas* no Management System e utilize o botão *Execute*. 
+
+Para visualizar a tabela criada, clique no diretório *Tables* dentro do banco de dados *EscolasDB* e utilize o botão *Refresh*. Expanda então o diretório e confirme a presença da tabela dbo.Escolas. Após, crie uma nova query conectada ao banco de dados *EscolasDB* e, nela, digite o seguinte comando:
+
+``SELECT * FROM dbo.Escolas``
+
+Selecione essa linha de comando digitada e aperte a tecla F5. Após isso, será exibida a tabela dbo.Escolas criada.
+
 ### Executando o programa
 Para executar o programa, abra o terminal e se dirija ao diretório **carregar-csv** que foi clonado para a sua máquina. Digite então o seguinte comando:
 
@@ -73,13 +81,12 @@ Após isso, o programa retornará mensagens indicando a criação da tabela e a 
 
 Para visualizar a tabela criada, abra o Management Studio e siga os seguintes passos:
 
-1. Dentro do banco de dados *EscolasDB*, clique no diretório *Tables* e após clique no botão *Refresh* para exibir a tabela dbo.Escolas criada pelo programa.
-2. Clique no banco de dados *EscolasDB*.
-3. Crie uma nova consulta, utilizando o botao *"New query"*.
-4. Na consulta, digite o seguinte comando:
+1. Clique no banco de dados *EscolasDB*.
+2. Crie uma nova consulta, utilizando o botao *"New query"*.
+3. Na consulta, digite o seguinte comando:
 
 ``SELECT * FROM dbo.Escolas``
 
-5. Selecione a linha de comando digitada anteriormente e aperte a tecla F5.
+4. Selecione a linha de comando digitada anteriormente e aperte a tecla F5.
 
 Seguidos esses passos, a tabela com os dados do arquivo CSV lido será exibida.

@@ -25,8 +25,6 @@ namespace carregar_csv
                 IEscolaDAO escolaDAO = new EscolaDAOImpl(connectionString);
                 LerCsvService lerCsvService = new();
 
-                escolaDAO.CriarTabela(nomeDb);
-
                 List<Escola> escolas = await lerCsvService.buscarDados(csvUrl);
 
                 escolaDAO.InserirEscola(nomeDb, escolas);

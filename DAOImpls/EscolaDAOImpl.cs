@@ -14,64 +14,6 @@ namespace carregar_csv.DAOImpls
         {
             connectionString = _connectionString;
         }
-       
-        //Cria a tabela a ser utilizada para receber os dados do arquivo CSV
-        public void CriarTabela(string nomeDb)
-        {
-            string query = $@"
-                USE {nomeDb};
-                IF OBJECT_ID('dbo.Escolas', 'U') IS NULL
-                CREATE TABLE dbo.Escolas (
-                    Id INT IDENTITY(1,1) PRIMARY KEY,
-                    Dre VARCHAR(255),
-                    CodEsc VARCHAR(255),   
-                    TipoEsc VARCHAR(255),
-                    Nomes VARCHAR(255),
-                    NomEscOfi VARCHAR(255),
-                    Ceu VARCHAR(255),
-                    Diretoria VARCHAR(255),
-                    SubPref VARCHAR(255),
-                    Endereco VARCHAR(255),
-                    Numero VARCHAR(255),
-                    Bairro VARCHAR(255),
-                    Cep VARCHAR(255),
-                    Tel_1 VARCHAR(255),
-                    Tel_2 VARCHAR(255),
-                    Fax VARCHAR(255),
-                    Situacao VARCHAR(255),
-                    CodDist VARCHAR(255),
-                    Distrito VARCHAR(255),
-                    Setor VARCHAR(255),
-                    CodInep VARCHAR(255),
-                    Cd_Cie VARCHAR(255),
-                    Eh VARCHAR(255),
-                    Fx_Etaria VARCHAR(255),
-                    Dt_Criacao VARCHAR(255),
-                    Ato_Criacao VARCHAR(255),
-                    Dom_Criacao VARCHAR(255),
-                    Dt_Ini_Conv VARCHAR(255),
-                    Dt_Autoriza VARCHAR(255),
-                    Dt_Extincao VARCHAR(255),
-                    Nome_Ant VARCHAR(255),
-                    Rede VARCHAR(255),
-                    Latitude VARCHAR(255),
-                    Longitude VARCHAR(255),
-                    Data_base VARCHAR(255)
-                )";
-
-            using SqlConnection conn = new(connectionString);
-            try
-            {
-            conn.Open();
-            SqlCommand command = new(query, conn);
-            command.ExecuteNonQuery();
-            Console.WriteLine("Tabela dbo.Escolas criado com sucesso.");
-            }
-            catch(SqlException ex)
-            {
-                Console.WriteLine($"Erro ao tentar criar tabela dbo.Escolas: {ex.Message}");
-            }
-        }
 
         //Insere os dados lidos do arquivo CSV na tabela criada
         public void InserirEscola(string nomeDb, List<Escola> escolas)
