@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("carregar-csv")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+757b1bd2aae500e9f675ada9db6cab2a5cfc66f9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b406183ba523ebb20c62d2e9a9ae48938879afcd")]
 [assembly: System.Reflection.AssemblyProductAttribute("carregar-csv")]
 [assembly: System.Reflection.AssemblyTitleAttribute("carregar-csv")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
