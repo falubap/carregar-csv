@@ -29,7 +29,7 @@ CREATE TABLE [dbo].[Escolas](
 	[CodDist] [int] NOT NULL,
 	[Distrito] [varchar](255) NOT NULL,
 	[Setor] [int] NOT NULL,
-	[CodInep] [int] NULL,
+	[CodInep] [varchar](255) NULL,
 	[Cd_Cie] [varchar](255) NULL,
 	[Eh] [varchar](255) NULL,
 	[Fx_Etaria] [varchar](255) NULL,
