@@ -71,7 +71,7 @@ namespace carregar_csv.Services
                         Rede = csv.GetField<string>(30),
                         Latitude = csv.GetField<float>(31),
                         Longitude = csv.GetField<float>(32),
-                        Data_base = csv.GetField<string>(33)
+                        Data_base = DateTime.ParseExact(csv.GetField<string>(33), "dd/MM/yyyy", CultureInfo.InvariantCulture)
                     };
                     escolas.Add(escola);
                 }

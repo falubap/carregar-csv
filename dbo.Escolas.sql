@@ -29,7 +29,7 @@ CREATE TABLE [dbo].[Escolas](
 	[CodDist] [int] NOT NULL,
 	[Distrito] [varchar](255) NOT NULL,
 	[Setor] [int] NOT NULL,
-	[CodInep] [varchar](255) NULL,
+	[CodInep] [int] NULL,
 	[Cd_Cie] [varchar](255) NULL,
 	[Eh] [varchar](255) NULL,
 	[Fx_Etaria] [varchar](255) NULL,
@@ -43,7 +43,7 @@ CREATE TABLE [dbo].[Escolas](
 	[Rede] [varchar](255) NULL,
 	[Latitude] [float] NOT NULL,
 	[Longitude] [float] NOT NULL,
-	[Data_base] [varchar](255) NOT NULL,
+	[Data_base] [datetime] NOT NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

@@ -39,6 +39,6 @@ namespace carregar_csv.Entities
         public string Rede { get; set; }
         public float Latitude { get; set; }
         public float Longitude { get; set; }
-        public string Data_base { get; set; }
+        public DateTime Data_base { get; set; }
     }       
 }
