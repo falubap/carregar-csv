@@ -20,21 +20,21 @@ namespace carregar_csv.Entities
         public int Cep { get; set; }
         public string Tel_1 { get; set; }
         public string Tel_2 { get; set; }
-        public string Fax { get; set; }
+        public int? Fax { get; set; }
         public string Situacao { get; set; }
         public int CodDist { get; set; }
         public string Distrito { get; set; }
         public int Setor { get; set; }
-        public string CodInep { get; set; }
-        public string Cd_Cie { get; set; }
-        public string Eh { get; set; }
+        public int? CodInep { get; set; }
+        public int? Cd_Cie { get; set; }
+        public float? Eh { get; set; }
         public string Fx_Etaria { get; set; }
-        public string Dt_Criacao { get; set; }
+        public DateTime? Dt_Criacao { get; set; }
         public string Ato_Criacao { get; set; }
-        public string Dom_Criacao { get; set; }
+        public DateTime? Dom_Criacao { get; set; }
         public string Dt_Ini_Conv { get; set; }
         public string Dt_Autoriza { get; set; }
-        public string Dt_Extincao { get; set; }
+        public int? Dt_Extincao { get; set; }
         public string Nome_Ant { get; set; }
         public string Rede { get; set; }
         public float Latitude { get; set; }

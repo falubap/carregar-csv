@@ -1,4 +1,5 @@
 using System.Globalization;
+using System.Text.RegularExpressions;
 using carregar_csv.Entities;
 using CsvHelper;
 using CsvHelper.Configuration;
@@ -10,6 +11,17 @@ namespace carregar_csv.Services
     public class LerCsvService
     {
         private static readonly HttpClient httpClient = new();
+
+        //método para tratar casos de text armazenado em campos numeric
+        private int? ParseIntField(string field)
+        {
+            string cleannedField = Regex.Replace(field, "[^0-9]", "");
+
+            if(int.TryParse(cleannedField, out int result))
+                return result;
+            else
+                return null;
+        }
 
         //A operação é feita de forma assíncrona para permitir maior performance
         //e escalabilidade
@@ -52,21 +64,21 @@ namespace carregar_csv.Services
                         Cep = csv.GetField<int>(11),
                         Tel_1 = csv.GetField<string>(12),
                         Tel_2 = csv.GetField<string>(13),
-                        Fax = csv.GetField<string>(14),
+                        Fax = ParseIntField(csv.GetField<string>(14)),
                         Situacao = csv.GetField<string>(15),
                         CodDist = csv.GetField<int>(16),
                         Distrito = csv.GetField<string>(17),
                         Setor = csv.GetField<int>(18),
-                        CodInep = csv.GetField<string>(19),
-                        Cd_Cie = csv.GetField<string>(20),
-                        Eh = csv.GetField<string>(21),
+                        CodInep = string.IsNullOrEmpty(csv.GetField<string>(19)) ? null : csv.GetField<int>(19),
+                        Cd_Cie = string.IsNullOrEmpty(csv.GetField<string>(20)) ? null : csv.GetField<int>(20),
+                        Eh = string.IsNullOrEmpty(csv.GetField<string>(21)) ? null : csv.GetField<float>(21),
                         Fx_Etaria = csv.GetField<string>(22),
-                        Dt_Criacao = csv.GetField<string>(23),
+                        Dt_Criacao = string.IsNullOrEmpty(csv.GetField<string>(23)) ? null : DateTime.ParseExact(csv.GetField<string>(23), "dd/MM/yyyy", CultureInfo.InvariantCulture),
                         Ato_Criacao = csv.GetField<string>(24),
-                        Dom_Criacao = csv.GetField<string>(25),
+                        Dom_Criacao = string.IsNullOrEmpty(csv.GetField<string>(25)) ? null : DateTime.ParseExact(csv.GetField<string>(25), "dd/MM/yyyy", CultureInfo.InvariantCulture),
                         Dt_Ini_Conv = csv.GetField<string>(26),
                         Dt_Autoriza = csv.GetField<string>(27),
-                        Dt_Extincao = csv.GetField<string>(28),
+                        Dt_Extincao = string.IsNullOrEmpty(csv.GetField<string>(28)) ? null : csv.GetField<int>(28),
                         Nome_Ant = csv.GetField<string>(29),
                         Rede = csv.GetField<string>(30),
                         Latitude = csv.GetField<float>(31),
