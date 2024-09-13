@@ -59,7 +59,7 @@ namespace carregar_csv.Services
                         Diretoria = csv.GetField<string>(6),
                         SubPref = csv.GetField<string>(7),
                         Endereco = csv.GetField<string>(8),
-                        Numero = csv.GetField<string>(9),
+                        Numero = ParseIntField(csv.GetField<string>(9)),
                         Bairro = csv.GetField<string>(10),
                         Cep = csv.GetField<int>(11),
                         Tel_1 = csv.GetField<string>(12),

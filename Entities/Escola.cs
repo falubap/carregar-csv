@@ -15,7 +15,7 @@ namespace carregar_csv.Entities
         public string Diretoria { get; set; }
         public string SubPref { get; set; }
         public string Endereco { get; set; }
-        public string Numero { get; set; }
+        public int? Numero { get; set; }
         public string Bairro { get; set; }
         public int Cep { get; set; }
         public string Tel_1 { get; set; }

@@ -43,7 +43,7 @@ namespace carregar_csv.DAOImpls
                     command.Parameters.AddWithValue("@Diretoria", escola.Diretoria);
                     command.Parameters.AddWithValue("@SubPref", escola.SubPref);
                     command.Parameters.AddWithValue("@Endereco", escola.Endereco);
-                    command.Parameters.AddWithValue("@Numero", escola.Numero);
+                    command.Parameters.AddWithValue("@Numero", escola.Numero.HasValue ? escola.Numero.Value : DBNull.Value);
                     command.Parameters.AddWithValue("@Bairro", escola.Bairro);
                     command.Parameters.AddWithValue("@Cep", escola.Cep);
                     command.Parameters.AddWithValue("@Tel_1", escola.Tel_1);
